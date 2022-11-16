@@ -1,57 +1,47 @@
-# Read Me First
-The following was discovered as part of building this project:
-
-* The original package name 'com.test.gw.gw-programming-test' is invalid and this project uses 'com.test.gw.gwprogrammingtest' instead.
-
-# Getting Started
-
-### Reference Documentation
-For further reference, please consider the following sections:
-
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.6.13/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.6.13/maven-plugin/reference/html/#build-image)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.6.13/reference/htmlsingle/#data.sql.jpa-and-spring-data)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.6.13/reference/htmlsingle/#web)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.6.13/reference/htmlsingle/#using.devtools)
-
-### Guides
-The following guides illustrate how to use some features concretely:
-
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
+online small bakery business
 
 
+- collect Customer-Information
+
+name
+birthdate
+gender
+address
+contactNumber
+favoriteItem => list => pancakes, cupcakes, cheesecake, cookies donuts, croissant
 
 
+- show customer information
+if form submit -- add new row
 
-# FrontWorkspace
+- feature - filter customers by fav item 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
+========
 
-## Development server
+<p>question-one </p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<a href=""></a>
+<ul>
+  Provided there are two strings. Please write the code to check if the
+  strings are anagrams of each other.
+  <li>
+    ■ Please output True if there are anagrams, and False if there
+    are not
+  </li>
+</ul>
 
-## Code scaffolding
+========
+<p>question-two </p>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+<ul>
+  Given a single string input, please write the code to get the first
+  character of the string that is repeated.
+  <li>■ Please output the first character if there are repeated
+    characters.</li>
+  <li>■ Please output None if there are no repeated characters</li>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+</ul>
 
-## Running unit tests
+========
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
