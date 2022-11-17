@@ -23,12 +23,14 @@ import org.hibernate.annotations.OrderBy;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "name", "contactNumber" }) })
 public class Customer implements Serializable {	

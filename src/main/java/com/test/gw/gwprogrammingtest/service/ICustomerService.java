@@ -1,14 +1,16 @@
 package com.test.gw.gwprogrammingtest.service;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
+import com.test.gw.gwprogrammingtest.dto.CustomerDto;
 import com.test.gw.gwprogrammingtest.model.Customer;
 
 public interface ICustomerService {
 	
-	Customer create(Customer customer);
-	Customer update(Customer customer);
+	Customer create(CustomerDto customer) throws ParseException;
+	Customer update(CustomerDto customer) throws ParseException;
 	void delete(int id);
 	
 	Customer findById(int id);
@@ -17,7 +19,7 @@ public interface ICustomerService {
 	
 	List<Customer> findByItemName(String itemName);
 	
-	List<Customer> findByDob(Date date);
+	List<Customer> findByDob(String date) throws ParseException;
 
 	List<Customer> findByDobInMonth(int month);
 

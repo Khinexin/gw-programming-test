@@ -24,7 +24,6 @@ export interface Item {
   name: string;
   photo: string;
   price: string;
-  isOutOfStock: string;
 }
 export class Item{
   constructor(item?: Item) {
@@ -33,7 +32,6 @@ export class Item{
       name: item ? item.name : '',
       photo: item ? item.photo : '',
       price: item ? item.price : '',
-      isOutOfStock: item ? item.isOutOfStock : '',
     };
   }
 }

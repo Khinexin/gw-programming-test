@@ -8,4 +8,5 @@ import com.test.gw.gwprogrammingtest.model.Item;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 
+	Item findByName(String name);
 }

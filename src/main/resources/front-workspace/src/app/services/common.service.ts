@@ -144,9 +144,19 @@ export class CommonService {
       );
   }
 
+// Get customers by month
+  getCustomersByMonth(month: any): Observable<any> {
+    const API_URL = `${this.REST_API}/customers/month/${month}`;
+    return this.httpClient.get(API_URL, {headers: this.HTTPHEADERS})
+      .pipe(map((res: any) => {
+          console.log(res);
+          return res || {};
+        }),
+        catchError(err => this.handleError(err))
+      );
+  }
 
 // Item
-
 // Add
   saveItem(data: Item): Observable<any> {
     const API_URL = `${this.REST_API}/save-item`;
