@@ -1,7 +1,61 @@
 <p>item-form works!</p>
-<form id="item-form">
-  dfghjkl
+<form id="item-form" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+  <input class="form-control" type="hidden" formControlName="id">
 
-  <button type="button" routerLink="/items">Cancel</button>
-  <button type="submit" >Submit</button>
+  <div class="col-sm-12 col-md-6">
+    <nz-form-label class="col-form-label col-sm-2 pt-0">Image</nz-form-label>
+    <div>
+
+      <div *ngIf="itemForm['controls'].photo?.value === '' " >
+        <input type="file" name="uploadfile" id="profileImage" style="display:none;"
+               multiple (change)="fileChangeEvent($event)" accept="image/*"/>
+        <label for="profileImage" class="btn btn-outline-secondary">Click me to upload image</label>
+      </div>
+
+      <div class="row" *ngIf="itemForm['controls'].photo?.value !== '' ">
+        <div formGroupName="photoBase64" class="col-sm-3">
+          <div class="article-listing images-preview">
+
+            <input formControlName="base64Img" type="hidden">
+            <input formControlName="name" type="hidden">
+
+            <button type="button" (click)="removeImage()"
+                    class="btn btn-danger remove-btn card-img-top"><i class="fa fa-remove"></i>
+            </button>
+
+            <img [src]="itemForm['controls'].photo?.value" class="card-img-top" alt="Image Preview">
+
+          </div>
+        </div>
+        <div class="col-sm-9"></div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-6">
+    <nz-form-label>Name</nz-form-label>
+    <nz-form-item>
+      <nz-form-control nzHasFeedback nzErrorTip="Please enter this field">
+        <input formControlName="name" type="text" nz-input
+               placeholder="Enter name" required maxlength="35"/>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+  <div class="col-sm-12 col-md-6">
+    <nz-form-label>Price</nz-form-label>
+    <nz-form-item>
+      <nz-form-control nzHasFeedback nzErrorTip="Please enter this field">
+        <input formControlName="price" type="text" nz-input
+               placeholder="Enter price" required maxlength="35" (keypress)="numberOnly($event)"/>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+
+
+  <button type="button" click)="cancelForm()">Cancel</button>
+  <button type="submit">Submit</button>
 </form>

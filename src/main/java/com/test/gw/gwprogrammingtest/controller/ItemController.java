@@ -1,6 +1,5 @@
 package com.test.gw.gwprogrammingtest.controller;
 
-import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,8 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.test.gw.gwprogrammingtest.dto.CustomerDto;
-import com.test.gw.gwprogrammingtest.model.Customer;
 import com.test.gw.gwprogrammingtest.model.Item;
 import com.test.gw.gwprogrammingtest.service.ItemService;
 

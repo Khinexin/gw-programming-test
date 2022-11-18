@@ -3,6 +3,7 @@ package com.test.gw.gwprogrammingtest.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Objects;
 import org.springframework.stereotype.Service;
 
 import com.test.gw.gwprogrammingtest.dto.CustomerDto;
+import com.test.gw.gwprogrammingtest.dto.ItemInitEnum;
 import com.test.gw.gwprogrammingtest.model.Customer;
 import com.test.gw.gwprogrammingtest.model.CustomerItem;
 import com.test.gw.gwprogrammingtest.model.Item;
@@ -26,7 +28,7 @@ public class CustomerService implements ICustomerService {
 	private final CustomerRepository customerRepository;
 	private final ItemRepository itemRepository;
 
-	SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdformat = new SimpleDateFormat("dd/MM/yyyy");
 
 	@Override
 	public Customer create(CustomerDto customerDto) throws ParseException {
@@ -37,14 +39,11 @@ public class CustomerService implements ICustomerService {
 
 		List<CustomerItem> favItems = new ArrayList<CustomerItem>();
 
-		for (Integer favItemId : customerDto.getFavoriteItemsIds()) {
-			Item item = itemRepository.findById(favItemId).orElse(null);
-			if (!Objects.isNull(item)) {
-				favItems.add(CustomerItem.builder().customer(saveCustomer).item(item).build());
-			}
+		for (Item item : customerDto.getFavoriteItemss()) {
+			favItems.add(CustomerItem.builder().customer(saveCustomer).item(item).build());
 		}
 
-		saveCustomer.setFavoriteItems(new HashSet<>(favItems));
+		saveCustomer.setFavoriteItems(favItems);
 
 		return customerRepository.saveAndFlush(saveCustomer);
 	}
@@ -56,7 +55,7 @@ public class CustomerService implements ICustomerService {
 
 		if (!Objects.isNull(saveCustomer)) {
 
-			if (!saveCustomer.getName().equalsIgnoreCase(customerDto.getName())) {
+			if (!saveCustomer.getName().equals(customerDto.getName())) {
 				saveCustomer.setName(customerDto.getName());
 			}
 			if (!saveCustomer.getDateOfBirth().equals(sdformat.parse(customerDto.getDateOfBirth()))) {
@@ -71,15 +70,13 @@ public class CustomerService implements ICustomerService {
 
 			List<CustomerItem> favItems = new ArrayList<CustomerItem>();
 
-			for (Integer favItemId : customerDto.getFavoriteItemsIds()) {
-				Item item = itemRepository.findById(favItemId).orElse(null);
-				if (!Objects.isNull(item)) {
-					favItems.add(CustomerItem.builder().customer(saveCustomer).item(item).build());
-				}
+			for (Item item : customerDto.getFavoriteItemss()) {
+				favItems.add(CustomerItem.builder().customer(saveCustomer).item(item).build());
 			}
 
-			if (!saveCustomer.getFavoriteItems().equals(new HashSet<>(favItems))) {
-				saveCustomer.setFavoriteItems(new HashSet<>(favItems));
+			if (!saveCustomer.getFavoriteItems().equals(favItems)) {
+				saveCustomer.getFavoriteItems().clear();
+				saveCustomer.setFavoriteItems(favItems);
 			}
 
 			return customerRepository.saveAndFlush(saveCustomer);
@@ -114,7 +111,59 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public List<Customer> findByDobInMonth(int month) {
-		return customerRepository.findByDobInMonth(month);
+		return customerRepository.findByMonth(month);
+	}
+
+	@Override
+	public void initializeItemsAndCustomers() {
+
+		if (itemRepository.count() == 0) {
+			for (ItemInitEnum item : ItemInitEnum.values()) {
+				itemRepository.save(
+						Item.builder().name(item.getName()).photo(item.getPhoto()).price(item.getPrice()).build());
+			}
+		}
+
+		if (customerRepository.count() == 0 && itemRepository.count() > 0) {
+			try {
+				this.create(
+						CustomerDto.builder().name("Aye Aye").dateOfBirth("1/5/1970").address("Mars").contactNumber("000000")
+								.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+										itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+								.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(
+						CustomerDto.builder().name("Bo Bo").dateOfBirth("2/6/1980").address("Neptune").contactNumber("111111")
+								.favoriteItemss(Arrays.asList(itemRepository.findByName("cookie"),
+										itemRepository.findByName("donuts"), itemRepository.findByName("croissant")))
+								.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(
+						CustomerDto.builder().name("Htay Htay").dateOfBirth("3/7/1990").address("Jupiter")
+								.contactNumber("222222")
+								.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+										itemRepository.findByName("cheesecake"), itemRepository.findByName("donuts")))
+								.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(
+						CustomerDto.builder().name("Maw Maw").dateOfBirth("4/8/2000").address("Venus").contactNumber("333333")
+								.favoriteItemss(Arrays.asList(itemRepository.findByName("cupcake"),
+										itemRepository.findByName("cookie"), itemRepository.findByName("croissant")))
+								.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 }

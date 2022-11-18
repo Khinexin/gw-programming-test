@@ -9,6 +9,8 @@ import { CustomerListComponent } from './components/customers/customer-list.comp
 import { ItemListComponent } from './components/items/item-list.component';
 import { CustomerFormComponent } from './components/customers/customer-form/customer-form.component';
 import { ItemFormComponent } from './components/items/item-form/item-form.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NgZorroAntdModule} from './ng-zorro-antd.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ItemFormComponent } from './components/items/item-form/item-form.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    NgZorroAntdModule
   ],
   providers: [],
   bootstrap: [AppComponent]

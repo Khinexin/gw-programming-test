@@ -2,7 +2,7 @@ package com.test.gw.gwprogrammingtest.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -54,6 +54,6 @@ public class Customer implements Serializable {
 	@Fetch (FetchMode.JOIN)
 	@OrderBy (clause = "item_id asc")
 	@JsonIgnore
-	private Set<CustomerItem> favoriteItems;
+	private List<CustomerItem> favoriteItems;
 
 }

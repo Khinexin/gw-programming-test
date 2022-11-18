@@ -1,7 +1,6 @@
 package com.test.gw.gwprogrammingtest.service;
 
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 import com.test.gw.gwprogrammingtest.dto.CustomerDto;
@@ -22,5 +21,7 @@ public interface ICustomerService {
 	List<Customer> findByDob(String date) throws ParseException;
 
 	List<Customer> findByDobInMonth(int month);
+	
+	void initializeItemsAndCustomers();
 
 }

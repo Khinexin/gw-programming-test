@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.test.gw.gwprogrammingtest.dto.CustomerDto;
 import com.test.gw.gwprogrammingtest.model.Customer;
 import com.test.gw.gwprogrammingtest.service.CustomerService;
-import com.test.gw.gwprogrammingtest.service.ItemService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,8 +21,6 @@ import lombok.RequiredArgsConstructor;
 public class CustomerController {
 	
 	private final CustomerService customerService;
-	private final ItemService itemService;
-	
 	
 	@PostMapping("save-customer")
 	public Customer saveCustomer(CustomerDto customerDto) throws ParseException {

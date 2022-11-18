@@ -1,7 +1,61 @@
-<p>customer-form works!</p>
-<form id="item-form">
-  dfghjkl
 
-  <button type="button" routerLink="/customers">Cancel</button>
-  <button type="submit" >Submit</button>
+<form id="item-form" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+  <input class="form-control" type="hidden" formControlName="id">
+
+  <div class="col-sm-12 col-md-6">
+    <label>Name</label>
+    <nz-form-item>
+      <nz-form-control nzHasFeedback nzErrorTip="Please enter this field">
+        <input formControlName="name" type="text" nz-input
+               placeholder="Enter first and last name" required maxlength="35"/>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <label>Contact Number</label>
+    <nz-form-item>
+      <nz-form-control nzHasFeedback nzErrorTip="Please enter this field">
+        <input formControlName="contactNumber" type="text" nz-input placeholder="09xxxxxxxx"
+               (keypress)="numberOnly($event)" required maxlength="18"/>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <label>Date Of Birth</label>
+    <nz-form-item>
+      <nz-form-control nzHasFeedback nzErrorTip="Please enter this field">
+        <nz-date-picker nz-icon nzType="ng-zorro:antd" [nzFormat]="'dd/MM/yyyy'"
+                        formControlName="dateOfBirth" nzPlaceHolder="DD/MM/YYYY"
+                        required></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <label>Address</label>
+    <nz-form-item>
+      <nz-form-control nzHasFeedback nzErrorTip="Please enter this field">
+        <input formControlName="address" type="text" nz-input placeholder="Enter address"/>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+
+  <div class="col-sm-12 col-md-6">
+    <label>Favourite items</label>
+    <nz-form-item>
+      <nz-form-control nzHasFeedback nzErrorTip="Please select one">
+        <nz-dropdown-menu #dropdown="nzDropdownMenu"  nzNoAnimation>
+          <nz-select nzNoAnimation  nzMode="multiple" nzAllowClear nzPlaceHolder="Select favorite item" nzShowSearch
+                     formControlName="favoriteItems" required>
+            <nz-option *ngFor="let item of itemList" [nzLabel]="item"
+                       [nzValue]="item" nzNoAnimation></nz-option>
+          </nz-select>
+        </nz-dropdown-menu>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+
+  <button type="button" click)="cancelForm()">Cancel</button>
+  <button type="submit">Submit</button>
 </form>

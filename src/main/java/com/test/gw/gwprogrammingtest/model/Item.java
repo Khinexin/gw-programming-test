@@ -28,14 +28,10 @@ public class Item implements Serializable {
 	
 	@Column(unique = true, length = 100)
 	private String name; // item name
-
+	
 	private String photo;
 
 	private int price;
-
-//	private int inStockNumber;
-//	private boolean isOutOfStock;
-	
 	
 
 }

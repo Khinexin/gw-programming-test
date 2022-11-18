@@ -1,7 +1,8 @@
 package com.test.gw.gwprogrammingtest.dto;
 
-import java.util.Date;
 import java.util.List;
+
+import com.test.gw.gwprogrammingtest.model.Item;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,5 +20,5 @@ public class CustomerDto {
 	private String dateOfBirth;
 	private String address;
 	private String contactNumber;
-	private List<Integer> favoriteItemsIds;
+	private List<Item> favoriteItemss;
 }
