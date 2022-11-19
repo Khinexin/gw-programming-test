@@ -119,24 +119,36 @@ public class CustomerService implements ICustomerService {
 
 		if (itemRepository.count() == 0) {
 			for (ItemInitEnum item : ItemInitEnum.values()) {
-				itemRepository.save(
-						Item.builder().name(item.getName()).photo(item.getPhoto()).price(item.getPrice()).build());
+				itemRepository.save(Item.builder().name(item.getName())
+//						.photo(item.getPhoto()).price(item.getPrice())
+						.build());
 			}
 		}
 
 		if (customerRepository.count() == 0 && itemRepository.count() > 0) {
 			try {
-				this.create(
-						CustomerDto.builder().name("Aye Aye").dateOfBirth("1/5/1970").address("Mars").contactNumber("000000")
-								.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
-										itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
-								.build());
+				this.create(CustomerDto.builder().name("Aye Aye").dateOfBirth("1/5/1970").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			try {
+				this.create(CustomerDto.builder().name("Aung Aung").dateOfBirth("2/1/1970").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			try {
 				this.create(
-						CustomerDto.builder().name("Bo Bo").dateOfBirth("2/6/1980").address("Neptune").contactNumber("111111")
+						CustomerDto.builder().name("Bo Bo").dateOfBirth("2/6/1980").address("Neptune")
+								.contactNumber("09111111")
 								.favoriteItemss(Arrays.asList(itemRepository.findByName("cookie"),
 										itemRepository.findByName("donuts"), itemRepository.findByName("croissant")))
 								.build());
@@ -146,7 +158,7 @@ public class CustomerService implements ICustomerService {
 			try {
 				this.create(
 						CustomerDto.builder().name("Htay Htay").dateOfBirth("3/7/1990").address("Jupiter")
-								.contactNumber("222222")
+								.contactNumber("09222222")
 								.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
 										itemRepository.findByName("cheesecake"), itemRepository.findByName("donuts")))
 								.build());
@@ -154,11 +166,132 @@ public class CustomerService implements ICustomerService {
 				e.printStackTrace();
 			}
 			try {
+				this.create(CustomerDto.builder().name("Hlaing Hlaing").dateOfBirth("5/3/1970").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				this.create(CustomerDto.builder().name("Maung Maung").dateOfBirth("5/1/1970").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
 				this.create(
-						CustomerDto.builder().name("Maw Maw").dateOfBirth("4/8/2000").address("Venus").contactNumber("333333")
+						CustomerDto.builder().name("Maw Maw").dateOfBirth("4/8/2000").address("Venus")
+								.contactNumber("09333333")
 								.favoriteItemss(Arrays.asList(itemRepository.findByName("cupcake"),
 										itemRepository.findByName("cookie"), itemRepository.findByName("croissant")))
 								.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(CustomerDto.builder().name("Moe Moe").dateOfBirth("5/2/1970").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				this.create(CustomerDto.builder().name("Scarlett Johansson").dateOfBirth("5/4/1970").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(CustomerDto.builder().name("Jennifer Lawrence").dateOfBirth("5/5/1970").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(CustomerDto.builder().name("Emma Watson").dateOfBirth("11/6/1970").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(CustomerDto.builder().name("Anne Hathaway").dateOfBirth("18/6/1970").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(CustomerDto.builder().name("Natalie Portman").dateOfBirth("25/7/1970").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(CustomerDto.builder().name("Chris Evans").dateOfBirth("13/6/1981").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(CustomerDto.builder().name("Robert Downey").dateOfBirth("4/4/1981").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(CustomerDto.builder().name("Jennifer Lawrence").dateOfBirth("15/11/1990").address("Mars")
+						.contactNumber("123456789")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				this.create(CustomerDto.builder().name("Channing Tatum").dateOfBirth("26/4/1981").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			try {
+				this.create(CustomerDto.builder().name("George Clooney").dateOfBirth("6/5/1981").address("Mars")
+						.contactNumber("000000")
+						.favoriteItemss(Arrays.asList(itemRepository.findByName("pancake"),
+								itemRepository.findByName("cupcake"), itemRepository.findByName("cheesecake")))
+						.build());
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}

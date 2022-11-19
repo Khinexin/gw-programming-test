@@ -21,8 +21,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 			+ "WHERE c.dateOfBirth LIKE %:dob%")
 	List<Customer> findByDob(@Param("dob")Date dateOfBirth);
 		
-//	@Query(value = "SELECT * FROM events WHERE event_date Like %?1%", nativeQuery = true)
-	@Query("SELECT DISTINCT c FROM Customer c ")
-//			+ "WHERE month(c.dateOfBirth) = :month")
-	List<Customer> findByMonth(@Param("dateOfBirth")int month);
+	@Query(value = "SELECT * FROM Customer WHERE MONTH(date_Of_Birth) =:?1 ORDER BY name", nativeQuery = true)
+	List<Customer> findByMonth(int month);
 }

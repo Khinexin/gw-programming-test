@@ -1,3 +1,8 @@
+- node version 19.0.0
+- angular version 15.0.0
+
+
+
 online small bakery business
 
 

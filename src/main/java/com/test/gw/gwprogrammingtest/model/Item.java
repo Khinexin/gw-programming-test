@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,9 +30,11 @@ public class Item implements Serializable {
 	@Column(unique = true, length = 100)
 	private String name; // item name
 	
-	private String photo;
-
-	private int price;
+//	@Lob
+//	@Column(columnDefinition = "LONGBLOB")
+//	private String photo;
+//
+//	private int price;
 	
 
 }
