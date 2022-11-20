@@ -1,52 +1,41 @@
-- node version 19.0.0
-- angular version 15.0.0
+# Test Project for Application Software Programmer [Solution 3]
 
+## Requirements
 
+For building and running the application you need:
 
-online small bakery business
+- [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [Maven 3](https://maven.apache.org)
+- Node 18.12.1 or higher
 
+## Running the application locally the server-side app
 
-- collect Customer-Information
+There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `D:\my_workspace\git_workspace\gw-programming-test\src\main\java\com\test\gw\gwprogrammingtest.GwProgrammingTestApplication` class from your IDE.
 
-name
-birthdate
-gender
-address
-contactNumber
-favoriteItem => list => pancakes, cupcakes, cheesecake, cookies donuts, croissant
+Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
 
+```shell
+$ mvn clean install
+$ mvn spring-boot:run
+```
+## Running the application locally the client-side app
 
-- show customer information
-if form submit -- add new row
+```shell
+$ cd gw-electron-client-workspace
+$ npm start
+```
 
-- feature - filter customers by fav item 
+## Libraries used for backend
+- Spring Boot
+- Spring MVC (Spring Web)
+- Spring Data JPA with Hibernate
+- Spring for GraphQL
+- MySql
+- lombok
+## Libraries used for frontend/desktop application
+- angular 15
+- electron
+- bootstrap 5
 
-========
-
-<p>question-one </p>
-
-<a href=""></a>
-<ul>
-  Provided there are two strings. Please write the code to check if the
-  strings are anagrams of each other.
-  <li>
-    ■ Please output True if there are anagrams, and False if there
-    are not
-  </li>
-</ul>
-
-========
-<p>question-two </p>
-
-
-<ul>
-  Given a single string input, please write the code to get the first
-  character of the string that is repeated.
-  <li>■ Please output the first character if there are repeated
-    characters.</li>
-  <li>■ Please output None if there are no repeated characters</li>
-
-</ul>
-
-========
-
+## Configure MySQL
+- Update the application.properties file in the `src/main/resources` folder with the URL, 'username' and 'password' for your MySQL instance. The table schema for the Customer objects will be created for you in the database.
