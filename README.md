@@ -22,6 +22,7 @@ $ mvn spring-boot:run
 
 ```shell
 $ cd gw-electron-client-workspace
+$ npm install
 $ npm start
 ```
 
