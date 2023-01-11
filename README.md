@@ -2,14 +2,14 @@
 
 
 
-### Question-1 [gw-programming-test-one]
+### Test-1 [gw-programming-test-one]
 - Provided there are two strings. Please write the code to check if the
 strings are anagrams of each other.
 - Please output True if there are anagrams, and False if there
 are not.
 
 
-### Question-2 [gw-programming-test-two]
+### Test-2 [gw-programming-test-two]
 - Given a single string input, please write the code to get the first
 character of the string that is repeated.
 - Please output the first character if there are repeated
@@ -17,7 +17,7 @@ characters.
 - Please output None if there are no repeated characters.
 
 
-### Question-3 [gw-programming-test-three]
+### Test-3 [gw-programming-test-three]
 - Suppose you are doing an online small bakery business and you
 want to collect your customer information to improve customer
 engagement for your business.
