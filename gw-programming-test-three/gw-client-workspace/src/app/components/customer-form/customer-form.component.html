@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="col-md-12">
+    <form id="item-form" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+
+      <h5 class="formTitle">Customer Form</h5>
+
+      <span *ngIf="errorMsg!==''" class="text-danger">* {{errorMsg}} is required! </span>
+
+      <input class="form-control" type="hidden" formControlName="id">
+
+      <div class="row mb-3">
+        <label>Name</label>
+
+        <input *ngIf="isAddMode" formControlName="name" type="text" class="form-control"
+               placeholder="Enter first and last name" required maxlength="35"/>
+
+        <input *ngIf="!isAddMode" formControlName="name" type="text" class="form-control"
+               placeholder="Enter first and last name" required maxlength="35" readonly/>
+
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Contact Number</label>
+        <input formControlName="contactNumber" type="text" placeholder="09xxxxxxxx" class="form-control"
+               (keypress)="numberOnly($event)" required maxlength="18"/>
+
+
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Date Of Birth</label>
+        <input class="form-control" placeholder="dd/mm/yyyy" name="d2" class="form-control"
+               formControlName="dateOfBirth" [max]="getToday()" type="date"/>
+
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Address</label>
+        <input formControlName="address" type="text" placeholder="Enter address" class="form-control"/>
+
+      </div>
+
+
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Favourite items</label>
+
+        <ng-multiselect-dropdown class="form-control"
+          [(ngModel)]="favItems" [ngModelOptions]="{standalone: true}" [placeholder]="'Select favourite items'"
+          [data]="itemOptions" [settings]="dropdownSettings"
+          (onSelect)="onItemSelect($event)">
+        </ng-multiselect-dropdown>
+      </div>
+
+
+      <div class="row formTitle">
+        <div class="col-3"></div>
+        <div class="col-3">
+          <button id="btnSubmit" class="btn btn-primary form-control btn-block" type="submit">Save</button>
+        </div>
+        <div class="col-3">
+          <button class="btn btn-light form-control  btn-block" type="button" (click)="cancelForm()">Cancel</button>
+        </div>
+        <div class="col-3"></div>
+      </div>
+
+    </form>
+  </div>
+</div>

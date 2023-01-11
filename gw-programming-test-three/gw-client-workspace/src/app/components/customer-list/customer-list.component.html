@@ -1,0 +1,112 @@
+<div *ngIf="!openSearchByItem && !openSearchByMonth" class="row">
+  <div class="col-md-3">
+    <button class="btn btn-outline-success" [routerLink]="['/customer-form']">Add New Customer</button>
+  </div>
+  <div class="col-md-3"><button class="btn btn-primary" [routerLink]="['/customers']"
+  (click)="getCustomerList()">All Customer List</button></div>
+  <div class="col-md-3"><button class="btn btn-outline-primary" (click)="getCustomerListThisMonthBD()">Check birthday on Current Month</button></div>
+
+  <div class="col-md-3">
+    <button class="btn btn-outline-dark" (click)="searchFormByItem()">Search By Favourite Item </button>
+<!--    <button class="btn btn-outline-dark" (click)="searchFormByMonth()">Search By Month </button>-->
+  </div>
+
+
+</div>
+<div *ngIf="openSearchByItem">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="row mb-3">
+      <label class="col-form-label">Search customer by favourite item</label>
+      <select [(ngModel)]="queryItem" class="form-control">
+        <option *ngFor="let item of itemOptions"  [value]="item">{{item}}</option>
+      </select>
+        <div class="row formTitle">
+          <div class="col-3"></div>
+          <div class="col-3">
+            <button class="btn btn-primary form-control btn-block" type="button"
+                    (click)="searchByItem()">Search</button>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-light form-control  btn-block" type="button"
+                    (click)="cancelSearchByItem()">Cancel</button>
+          </div>
+          <div class="col-3"></div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="openSearchByMonth">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="row mb-3">
+      <label class="col-form-label">Search customer by favourite item</label>
+      <select [(ngModel)]="queryMonth" class="form-control">
+        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+        <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+        <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+      </select>
+        <div class="row formTitle">
+          <div class="col-3"></div>
+          <div class="col-3">
+            <button id="btnSubmit" class="btn btn-primary form-control btn-block" type="button"
+                    (click)="searchByMonth()">Search</button>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-light form-control  btn-block" type="button"
+                    (click)="cancelSearchByMonth()">Cancel</button>
+          </div>
+          <div class="col-3"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<hr/>
+<table class="table table-striped">
+  <thead class="bg-light">
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Date Of Birth</th>
+    <th scope="col">Favourite Items</th>
+    <th scope="col" colspan="2" style="text-align: center">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of customerList;let i = index ">
+    <th scope="row">
+      <div class="d-flex align-items-center">
+        <div class="ms-3">
+          <p class="fw-bold mb-1">{{data.name}}</p>
+          <p class="text-muted mb-0">{{data?.contactNumber }}</p>
+          <p class="text-muted mb-0">{{data?.address ? data.address : '-'}}</p>
+        </div>
+      </div>
+    </th>
+    <td>
+      <p class="text-muted mb-0">{{data?.dateOfBirth ? data.dateOfBirth : '-'}}</p>
+    </td>
+    <td>
+      <ul class="text-muted mb-0" *ngFor="let item of data?.favoriteItems"><li>{{item}}</li></ul>
+    </td>
+
+    <td>
+      <a [routerLink]="'/edit-customer/'+data.id" class="btn btn-sm btn-primary mr-1">Edit</a>
+    </td>
+    <td>
+
+      <button (click)="delete(data.id, i)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="data.isDeleting">
+        <span *ngIf="data.isDeleting" class="spinner-border spinner-border-sm"></span>
+        <span *ngIf="!data.isDeleting">Delete</span>
+      </button>
+    </td>
+
+  </tr>
+  </tbody>
+  <div *ngIf="customerList?.length === 0" class="row"> <h1 style="text-align: center">No Data ... </h1></div>
+</table>
